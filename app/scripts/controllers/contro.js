@@ -1,0 +1,23 @@
+angular.module('1118App').controller('cont',function($scope,$http,obj){
+	obj.ajax("http://www.somenote.cn:1510/test","GET",function(e){
+				$scope.aa=e
+	})
+	obj.ajax("http://www.somenote.cn:1510/aut","GET",function(e){
+				$scope.aa2=e
+	})
+	obj.ajax("http://www.somenote.cn:1510/test2","GET",function(e){
+				$scope.aa3=e
+	})
+})
+.service("obj",function($http){
+			return {
+				ajax:function(url,methods,callback){
+					$http({
+						url:url,
+						method:methods
+					}).success(function(e){
+						callback(e)
+					})
+				}
+			}
+})
